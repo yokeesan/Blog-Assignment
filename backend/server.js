@@ -1,0 +1,35 @@
+import express from 'express';
+import cors from 'cors';
+import path from 'path';
+import 'dotenv/config';
+import connectDB from './config/db.js';
+import blogRoutes from './routes/blogRoutes.js';
+
+// Create __dirname equivalent in ES modules
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const port = process.env.PORT || 4000;
+
+// Connect to the database
+connectDB();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Serve static files from the uploads directory
+app.use('/images', express.static(path.join(__dirname, 'uploads'))); // Now this will work
+
+// API endpoints
+app.get('/', (req, res) => {
+    res.send("API WORKING");
+});
+
+// Use blog routes
+app.use('/api/blogs', blogRoutes);
+
+// Start the server
+app.listen(port, () => console.log(`Server started on PORT: ${port}`));
