@@ -16,7 +16,7 @@ const port = process.env.PORT || 4000;
 connectDB();
 
 // Middleware
-const allowedOrigins = ['https://your-frontend-url.vercel.app']; // Replace with your actual frontend URL
+const allowedOrigins = ['https://blog-frontend-eight-plum.vercel.app/']; // Replace with your actual frontend URL
 app.use(cors({
     origin: allowedOrigins,
     credentials: true, // If your frontend needs to send cookies or other credentials
