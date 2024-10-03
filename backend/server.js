@@ -16,12 +16,16 @@ const port = process.env.PORT || 4000;
 connectDB();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = ['https://your-frontend-url.vercel.app']; // Replace with your actual frontend URL
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true, // If your frontend needs to send cookies or other credentials
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the uploads directory
-app.use('/images', express.static(path.join(__dirname, 'uploads'))); // Now this will work
+app.use('/images', express.static(path.join(__dirname, 'uploads')));
 
 // API endpoints
 app.get('/', (req, res) => {
@@ -30,6 +34,12 @@ app.get('/', (req, res) => {
 
 // Use blog routes
 app.use('/api/blogs', blogRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
 
 // Start the server
 app.listen(port, () => console.log(`Server started on PORT: ${port}`));
