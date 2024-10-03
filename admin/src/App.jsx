@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar/Navbar";
-import Sidebar from "./components/sidebar/Sidebar";
+import Sidebar from "./components/sidebar/sidebar";
 import { Routes, Route } from "react-router-dom";
 import AddBlog from "./pages/Add/Add";
 import ListBlogs from "./pages/List/List";
