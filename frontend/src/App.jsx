@@ -1,10 +1,9 @@
-// src/App.jsx
 import React from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Services from "./pages/Services";
 import Home from "./pages/Home";
-import Blog from "./pages/Blogs"; // Ensure you import correctly
+import Blog from "./pages/Blogs";
 import { Route, Routes } from "react-router-dom";
 
 const App = () => {
@@ -15,7 +14,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
-        <Route path="/blogs" element={<Blog url={url} />} /> {/* Use Blog here */}
+        <Route path="/blogs" element={<Blog url={url} />} />
       </Routes>
       <Footer />
     </div>

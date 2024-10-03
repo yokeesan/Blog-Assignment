@@ -1,11 +1,10 @@
-// AddBlog.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { assets } from '../../assets/assets';
 
 const Add = ({ url }) => {
-  const [image, setImage] = useState(null); // Initialize as null
+  const [image, setImage] = useState(null);
   const [data, setData] = useState({
     title: "",
     description: "",

@@ -1,4 +1,3 @@
-// routes/blogRoutes.js
 import express from 'express';
 import { addBlog, getBlogs, deleteBlog } from '../controllers/blogController.js';
 import multer from 'multer';
@@ -9,10 +8,10 @@ const router = express.Router();
 // Set up multer for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Ensure this folder exists
+        cb(null, 'uploads/'); 
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); // Append timestamp to filename
+        cb(null, Date.now() + path.extname(file.originalname));
     },
 });
 

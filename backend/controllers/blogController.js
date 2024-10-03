@@ -1,11 +1,10 @@
-// controllers/blogController.js
 import Blog from '../models/blog.js';
 
 // Add a new blog
 export const addBlog = async (req, res) => {
     try {
         const { title, description, content, date } = req.body;
-        const image = req.file ? req.file.filename : null; // Handle image upload
+        const image = req.file ? req.file.filename : null; 
 
         if (!image) {
             return res.status(400).json({ success: false, message: "Image is required" });
@@ -38,7 +37,7 @@ export const getBlogs = async (req, res) => {
 
 // Delete a blog
 export const deleteBlog = async (req, res) => {
-    const { id } = req.body; // Assuming ID is sent in the request body
+    const { id } = req.body; 
     try {
         const blog = await Blog.findByIdAndDelete(id);
         if (!blog) {
