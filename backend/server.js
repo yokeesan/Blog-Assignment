@@ -2,8 +2,15 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import 'dotenv/config';
+import fs from 'fs'; // Import fs to handle file system operations
 import connectDB from './config/db.js';
 import blogRoutes from './routes/blogRoutes.js';
+
+// Ensure the uploads directory exists
+const uploadsDir = 'uploads';
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true }); // Create the uploads directory if it doesn't exist
+}
 
 // Create __dirname equivalent in ES modules
 const __filename = new URL(import.meta.url).pathname;
